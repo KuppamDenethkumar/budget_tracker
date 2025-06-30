@@ -1,0 +1,183 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background: #f8f9fa;
+  color: #333;
+  transition: background 0.3s, color 0.3s;
+  overflow-x: hidden;
+  position: relative;
+}
+
+body.dark {
+  background: #121212;
+  color: #f1f1f1;
+}
+
+.topbar {
+  background: #007bff;
+  color: white;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#toggleTheme {
+  background: #ffffff33;
+  color: white;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.main-content {
+  padding: 20px;
+  z-index: 1;
+  position: relative;
+}
+
+.transactions-section table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.transactions-section th,
+.transactions-section td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+
+.transactions-section input,
+.transactions-section select {
+  padding: 6px;
+  margin-right: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#addTransactionBtn {
+  background: #28a745;
+  color: white;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.export-section {
+  margin-top: 10px;
+}
+
+#exportExcelBtn {
+  background: #17a2b8;
+  color: white;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 6px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+body.dark .modal-content {
+  background: #1f1f1f;
+  color: #f1f1f1;
+}
+
+.modal-content input,
+.modal-content select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.modal-content button {
+  background: #007bff;
+  color: white;
+  padding: 8px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.floating-dollars-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.dollar {
+  position: absolute;
+  font-size: 2rem;
+  opacity: 0.5;
+  animation: float 10s infinite linear;
+}
+
+@keyframes float {
+  0% { transform: translateY(100vh); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateY(-10vh); opacity: 0; }
+}
+
+@media screen and (max-width: 768px) {
+  .main-content {
+    padding: 10px;
+  }
+
+  .transactions-section table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .transaction-header {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  #addTransactionBtn,
+  #exportExcelBtn {
+    width: 100%;
+  }
+
+  .modal-content {
+    width: 90%;
+  }
+
+  .topbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}

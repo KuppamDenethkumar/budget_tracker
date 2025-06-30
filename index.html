@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BudgetEase</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+</head>
+<body>
+  <div class="floating-dollars-container" id="dollarContainer"></div>
+
+  <header class="topbar">
+    <div class="logo">🏠 BudgetBuddy💰</div>
+    <button id="toggleTheme">🌙 Dark Mode</button>
+  </header>
+
+  <main class="main-content">
+    <section class="welcome">
+      <h2>Welcome to BudgetEase!</h2>
+      <p>Track your spending and plan your budget smarter.</p>
+    </section>
+
+    <section class="transactions-section">
+      <div class="transaction-header">
+        <h3>Transactions</h3>
+        <input type="text" id="search" placeholder="Search..." />
+        <button id="addTransactionBtn">+ Add</button>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Type</th>
+            <th>Category</th>
+            <th>Payee</th>
+            <th>Amount</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="transactionTable"></tbody>
+      </table>
+
+      <div class="export-section">
+        <button id="exportExcelBtn">📥 Download Excel</button>
+      </div>
+    </section>
+
+    <section id="reportSection">
+      <h3>📊 Report Summary</h3>
+      <p>Total Income: ₹<span id="incomeTotal">0</span></p>
+      <p>Total Expenses: ₹<span id="expenseTotal">0</span></p>
+      <canvas id="expenseChart" width="400" height="200"></canvas>
+    </section>
+  </main>
+
+  
+  <div class="modal" id="transactionModal">
+    <div class="modal-content">
+      <h3>Add Transaction</h3>
+      <input type="date" id="dateInput" />
+      <select id="typeInput">
+        <option value="Income">Income</option>
+        <option value="Expense">Expense</option>
+      </select>
+      <input type="text" id="categoryInput" placeholder="Category" />
+      <input type="text" id="payeeInput" placeholder="Payee" />
+      <input type="number" id="amountInput" placeholder="Amount" />
+      <select id="statusInput">
+        <option value="Paid">Paid</option>
+        <option value="Received">Received</option>
+      </select>
+      <button id="saveTransactionBtn">Save</button>
+      <button onclick="closeModal()">Cancel</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
